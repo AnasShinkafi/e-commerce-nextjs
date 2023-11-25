@@ -1,6 +1,5 @@
 import Container from '@/components/Container'
 import FormWrap from '@/components/FormWrap'
-import React from 'react'
 import RegisterForm from './RegisterForm'
 import { getCurrentUser } from '@/actions/getCurrentUser'
 

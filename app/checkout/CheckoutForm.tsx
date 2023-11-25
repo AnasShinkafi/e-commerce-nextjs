@@ -22,20 +22,20 @@ const CheckoutForm = ({clientSecret, handleSetPaymentSuccess}: Props) => {
 
     useEffect(() => {
         if(!stripe) {
-            return
-        }
+            return;
+        };
         if(!clientSecret) {
-            return
-        }
-        handleSetPaymentSuccess(false)
+            return;
+        };
+        handleSetPaymentSuccess(false);
     },[clientSecret, handleSetPaymentSuccess, stripe]);
 
     const handleSubmit = async(e: React.FormEvent) => {
         e.preventDefault();
 
         if(!stripe || !elements) {
-            return
-        }
+            return;
+        };
 
         setIsLoading(true);
 
@@ -52,9 +52,10 @@ const CheckoutForm = ({clientSecret, handleSetPaymentSuccess}: Props) => {
             setIsLoading(false);
         });
     };
+    
   return (
     <form onSubmit={handleSubmit} id="payment-form">
-        <div className=" mb-6">
+        <div className="mb-6">
             <Heading title="Enter Your details to complete checkout" />
         </div>
         <h2 className="font-semibold mb-2">Address Information</h2>
@@ -62,9 +63,9 @@ const CheckoutForm = ({clientSecret, handleSetPaymentSuccess}: Props) => {
             mode: 'shipping',
             allowedCountries: ['NIG', 'US', 'UK'],
         }}/>
-        <h2 className=" font-semibold mt-4 mb-2">Payment Information</h2>
+        <h2 className="font-semibold mt-4 mb-2">Payment Information</h2>
         <PaymentElement id="payment-element" options={{ layout: 'tabs'}}/>
-        <div className=" py-4 text-center text-slate-700 text-xl font-bold">Total: {formattedPrice}</div>
+        <div className="py-4 text-center text-slate-700 text-xl font-bold">Total: {formattedPrice}</div>
         <Button 
         label={isLoading ? 'Processing' : 'Pay now'} 
         disabled={isLoading || !stripe || !elements} 

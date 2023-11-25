@@ -48,7 +48,7 @@ const ProductDetails = ({ product }: Props) => {
         quantity: 1,
         price: product.price,
     });
-    const router = useRouter()
+    const router = useRouter();
 
     useEffect(() => {
         setIsProductInCart(false);
@@ -58,8 +58,8 @@ const ProductDetails = ({ product }: Props) => {
 
             if (existingIndex > -1) {
                 setIsProductInCart(true);
-            }
-        }
+            };
+        };
     }, [setIsProductInCart, cartProducts, product])
 
     const productRating = product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) / product.reviews.length;
@@ -67,7 +67,7 @@ const ProductDetails = ({ product }: Props) => {
     const handleColorSelect = useCallback(
         (value: SelectedImgType) => {
             setCartProduct((prev) => {
-                return { ...prev, selectedIma: value }
+                return { ...prev, selectedImage: value }
             })
         }, [setCartProduct]);
 
@@ -90,12 +90,12 @@ const ProductDetails = ({ product }: Props) => {
     }, [setCartProduct, cartProduct]);
 
     return (
-        <div className=" grid grid-cols-1 gap-12 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             <div className="">
                 <ProductImage cartProduct={cartProduct} product={product} handleColorSelect={handleColorSelect} />
             </div>
             <div className="flex gap-1 flex-col text-slate-500 text-sm">
-                <h2 className=" text-3xl font-medium text-slate-700">{product.name}</h2>
+                <h2 className="text-3xl font-medium text-slate-700">{product.name}</h2>
                 <div className="flex items-center gap-2">
                     <Rating value={productRating} readOnly />
                     <div className="">{product.reviews.length} reviews</div>
@@ -115,7 +115,7 @@ const ProductDetails = ({ product }: Props) => {
                 <Horizontal />
                 {isProductInCart ? (
                     <>
-                        <p className=" mb-2 text-slate-500 flex items-center gap-1">
+                        <p className="mb-2 text-slate-500 flex items-center gap-1">
                             <MdCheckCircle className="text-teal-400" size={20} />
                             <span className="">Product added to cart</span>
                         </p>

@@ -26,14 +26,6 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-// model Session {
-//   id           String   @id @default(cuid())
-//   sessionToken String   @unique
-//   userId       String
-//   expires      DateTime
-//   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-// }
-
 model User {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
   name           String?
@@ -47,7 +39,6 @@ model User {
   role           Role      @default(USER)
   orders         Order[]
   reviews        Review[]
-  //   sessions      Session[]
 }
 
 enum Role {
@@ -55,13 +46,6 @@ enum Role {
   ADMIN
 }
 
-// model VerificationToken {
-//   identifier String
-//   token      String   @unique
-//   expires    DateTime
-
-//   @@unique([identifier, token])
-// }
 
 model Product {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId

@@ -1,7 +1,6 @@
 import { getCurrentUser } from "@/actions/getCurrentUser";
-import { CartProductType } from "@prisma/client";
+import { CartProductType } from "@/app/product/[id]/ProductDetails";
 import { NextResponse } from "next/server";
-import { it } from "node:test";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
@@ -24,8 +23,8 @@ export async function POST(req: Request) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
-    return NextResponse.error()
-  }
+    return NextResponse.error();
+  };
 
   const body = await req.json();
   const { item, payment_intent_id } = body;
@@ -49,10 +48,10 @@ export async function POST(req: Request) {
     if (current_intent) {
       const update_intent = await stripe.paymentIntents.update(
         payment_intent_id,
-        { amount: total }
+        { amount: total },
       );
       // update the order
-      const [existing_order, update_order] = await Promise.all([
+      const [existing_order] = await Promise.all([
         prisma?.order.findFirst({
           where: { paymentIntentId: payment_intent_id },
         }),
@@ -67,9 +66,9 @@ export async function POST(req: Request) {
 
       if (!existing_order) {
         return NextResponse.error();
-      }
+      };
       return NextResponse.json({ paymentIntent: update_intent });
-    }
+    };
   } else {
     // create the intent
     const paymentIntent = await stripe.paymentIntents.create({
@@ -85,5 +84,5 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.error();
-  }
-}
+  };
+};

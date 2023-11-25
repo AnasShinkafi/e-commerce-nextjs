@@ -40,4 +40,5 @@ export default async function Home({searchParams}: HomeProps) {
       </Container>
     </div>
   )
-}
+}  
+ 

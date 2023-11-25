@@ -11,7 +11,7 @@ const CartPage = async (props: Props) => {
   const currentUser = await getCurrentUser();
 
   return (
-    <div className=' pt-8'>
+    <div className='pt-8'>
       <Container>
         <CartClient currentUser={currentUser} />
       </Container>

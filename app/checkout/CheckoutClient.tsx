@@ -8,11 +8,9 @@ import toast from 'react-hot-toast'
 import CheckoutForm from './CheckoutForm'
 import Button from '@/components/Button'
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string)
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string);
 
-type Props = {}
-
-const CheckoutClient = ({}: Props) => {
+const CheckoutClient = () => {
     const {cartProducts, paymentIntent, handleSetPaymentIntent} = useCart();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -32,60 +30,60 @@ const CheckoutClient = ({}: Props) => {
                 body: JSON.stringify({
                     items: cartProducts,
                     payment_intent_id: paymentIntent,
-                })
+                }),
             }).then((res) => {
-                setError(false);
+                // setError(false);
+                setLoading(false);
                 if(res.status === 401) {
                     return router.push(`/login`)
-                }
+                };
 
-                return res.json()
+                return res.json();
             }).then((data) => {
                 setClientSecret(data.paymentIntent.client_secret);
                 handleSetPaymentIntent(data.paymentIntent.id);
             }).catch((error) => {
                 setError(true);
-                toast.error("Something went wrong")
-            })
+                toast.error("Something went wrong");
+            });
         };
     },[cartProducts, handleSetPaymentIntent, paymentIntent, router]);
 
     const options: StripeElementsOptions = {
         clientSecret,
         appearance: {
-            theme: "stripe",
+            theme: 'stripe',
             labels: 'floating',
         },
     };
 
     const handleSetPaymentSuccess = useCallback((value: boolean) => {
-        setPaymentSuccess(value)
+        setPaymentSuccess(value);
     }, []);
 
   return (
-    <div className=' w-full'>
+    <div className='w-full'>
         {clientSecret && cartProducts && (
             <Elements options={options} stripe={stripePromise}>
             <CheckoutForm clientSecret={clientSecret} handleSetPaymentSuccess={handleSetPaymentSuccess} />
         </Elements>
         )}
         {loading && (
-            <div className=" text-center">Loading Checkout...</div>
+            <div className="text-center">Loading Checkout...</div>
         )}
         {error && (
-            <div className=" text-center text-rose-500">Something went wrong...</div>
+            <div className="text-center text-rose-500">Something went wrong...</div>
         )}
         {paymentSuccess && (
-            <div className=" flex items-center flex-col gap-4">
-                <div className="
-                text-teal-500 text-center">Payment Success</div>
-                <div className=" max-w-[220px] end-full">
+            <div className="flex items-center flex-col gap-4">
+                <div className="text-teal-500 text-center">Payment Success</div>
+                <div className="max-w-[220px] end-full">
                     <Button label='View Your Order' onClick={() => router.push(`/orders`)} />
                 </div>
             </div>
         )}
     </div>
   )
-}
+};
 
-export default CheckoutClient
+export default CheckoutClient;

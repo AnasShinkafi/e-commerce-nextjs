@@ -31,25 +31,25 @@ export const authOptions: AuthOptions = {
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.email
-          }
-        })
+          },
+        });
 
         if(!user || !user?.hashedPassword) {
           throw new Error('Invalid email or password');
-        }
+        };
 
         const isCorrectPassword = await bcrypt.compare(
           credentials.password,
           user.hashedPassword
-        )
+        );
 
         if(!isCorrectPassword) {
           throw new Error('Invalid email or password');
-        }
+        };
 
         return user;
-      }
-    })
+      },
+    }),
   ],
   pages: {
     signIn: '/login'
