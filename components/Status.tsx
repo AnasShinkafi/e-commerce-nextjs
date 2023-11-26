@@ -6,7 +6,7 @@ type Props = {
     icon: IconType;
     bg: string;
     color: string;
-}
+};
 
 const Status = ({text, icon: Icon, bg, color}: Props) => {
   return (
@@ -15,6 +15,6 @@ const Status = ({text, icon: Icon, bg, color}: Props) => {
         {text} <Icon size={15} />
     </div>
   )
-}
+};
 
 export default Status

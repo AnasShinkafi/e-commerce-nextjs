@@ -4,7 +4,7 @@ import prisma from '@/libs/prismadb'
 
 export async function getSession() {
     return await getServerSession(authOptions);
-}
+};
 
 export async function getCurrentUser() {
     try {
@@ -12,27 +12,27 @@ export async function getCurrentUser() {
 
         if(!session?.user?.email) {
             return null;
-        }
+        };
         const currentUser = await prisma?.user.findUnique({
             where: {
                 email: session?.user?.email
             },
             include: {
                 orders: true,
-            }
+            },
         });
 
         if(!currentUser) {
             return null
-        }
+        };
 
         return {
             ...currentUser,
             createdAt: currentUser.createdAt.toISOString(),
             updatedAt: currentUser.updatedAt.toISOString(),
             emailVerified: currentUser.emailVerified?.toISOString() || null,
-        }
+        };
     } catch (error: any) {
         return null;
-    }
-}
+    };
+};

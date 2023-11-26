@@ -3,9 +3,8 @@ import { useCart } from "@/hooks/useCart"
 import { useRouter } from "next/navigation"
 import { CiShoppingCart } from 'react-icons/ci'
 
-type Props = {}
 
-const CartCount = (props: Props) => {
+const CartCount = () => {
     const {cartTotalQty} = useCart();
     const router = useRouter();
 
@@ -18,7 +17,7 @@ const CartCount = (props: Props) => {
             {cartTotalQty}
         </span>
     </div>
-  )
-}
+  );
+};
 
-export default CartCount
+export default CartCount;

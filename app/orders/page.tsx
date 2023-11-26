@@ -9,13 +9,13 @@ const Orders = async () => {
 
   if(!currentUser) {
     return <NullData title='Oops! Access denied' />
-  }
+  };
 
   const orders = await getOrdersByUserId(currentUser.id);
 
   if(!orders) {
     return <NullData title='No orders yet...' />
-  }
+  };
 
   return (
     <div className=" pt-8">
@@ -23,7 +23,7 @@ const Orders = async () => {
         <OrdersClient orders={orders} />
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default Orders
+export default Orders;

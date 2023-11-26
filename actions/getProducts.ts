@@ -3,14 +3,14 @@ import prisma from '@/libs/prismadb'
 export interface IProductParam {
     category?: string | null;
     searchTerm?: string | null;
-}
+};
 
 export default async function getProducts(params:IProductParam) {
     try {
         const {category, searchTerm} = params;
         let searchString = searchTerm;
 
-        if(searchString) {
+        if(!searchTerm) {
             searchString = '';
         };
         let query: any = {};
@@ -31,9 +31,9 @@ export default async function getProducts(params:IProductParam) {
                         description: {
                             contains: searchString,
                             mode: 'insensitive',
-                        }
-                    }
-                ]
+                        },
+                    },
+                ],
             },
             include: {
                 reviews: {
@@ -42,13 +42,13 @@ export default async function getProducts(params:IProductParam) {
                     },
                     orderBy: {
                         createdAt: 'desc' 
-                    }
-                }
-            }
-        })
+                    },
+                },
+            },
+        });
         return products;
         
     } catch (error: any) {
         throw new Error(error);
-    }
-}
+    };
+};

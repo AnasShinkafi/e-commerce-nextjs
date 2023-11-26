@@ -8,7 +8,7 @@ export async function POST(req: Request) {
 
     if(!currentUser) {
         return NextResponse.error();
-    }
+    };
 
     const body = await req.json();
     const { comment, rating, product, userId } = body;
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 
     if(userReview || !deliveredOrder) {
         return NextResponse.error();
-    }
+    };
 
     const review = await prisma?.review.create({
         data: {
@@ -30,8 +30,8 @@ export async function POST(req: Request) {
             rating,
             productId: product.id,
             userId,
-        }
+        },
     });
 
     return NextResponse.json(review);
-}
+};

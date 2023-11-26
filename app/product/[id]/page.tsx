@@ -9,7 +9,7 @@ import { getCurrentUser } from "@/actions/getCurrentUser"
 
 type Props = {
     productId?: string
-}
+};
 
 const Product = async ({params}: {params: Props}) => {
   const product = await getProductById(params);
@@ -31,7 +31,7 @@ const Product = async ({params}: {params: Props}) => {
             </div>
         </Container>
     </div>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;

@@ -57,8 +57,8 @@ export default async function getGraphData() {
 
             // Return the formatted data
             return formattedData;
-        }
+        };
     } catch (error: any) {
         throw new Error(error);
-    }
-}
+    };
+};

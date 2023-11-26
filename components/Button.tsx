@@ -11,7 +11,7 @@ type Props = {
     custom?: string,
     icon?: IconType,
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
-}
+};
 
 const Button = ({label, disabled, onClick, outline, small, custom, icon: Icon}: Props) => {
   return (
@@ -19,7 +19,7 @@ const Button = ({label, disabled, onClick, outline, small, custom, icon: Icon}: 
         {Icon && <Icon size={24} />}
         {label} 
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

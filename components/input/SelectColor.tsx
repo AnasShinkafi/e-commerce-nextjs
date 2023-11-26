@@ -1,6 +1,6 @@
 "use client"
 import { ImageType } from '@/app/admin/add-products/AddProductForm'
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import SelectImage from './SelectImage';
 import Button from '../Button';
 
@@ -9,7 +9,7 @@ type Props = {
     addImageToState: (value: ImageType) => void;
     removeImageFromState: (value: ImageType) => void;
     isProductCreated: boolean; 
-}
+};
 
 const SelectColor = ({item, addImageToState, removeImageFromState, isProductCreated}: Props) => {
     const [isSelected, setIsSelected] = useState(false);
@@ -19,7 +19,7 @@ const SelectColor = ({item, addImageToState, removeImageFromState, isProductCrea
         if(isProductCreated) {
             setIsSelected(false);
             setFile(null);
-        }
+        };
     },[isProductCreated]);
 
     const handleFileChange = useCallback((value: File) => {
@@ -33,26 +33,25 @@ const SelectColor = ({item, addImageToState, removeImageFromState, isProductCrea
         if(!e.target.checked) {
             setFile(null);
             removeImageFromState(item);
-        }
+        };
     }, [item, removeImageFromState]);
 
   return (
-    <div className='grid
-     grid-cols-1 overflow-y-auto border-[1.2px] border-slate-200 items-center p-2'>
-        <div className=" flex flex-row gap-2 items-center h-[60px]">
+    <div className='grid grid-cols-1 overflow-y-auto border-[1.2px] border-slate-200 items-center p-2'>
+        <div className="flex flex-row gap-2 items-center h-[60px]">
             <input type="checkbox" id={item.color} checked={isSelected} onChange={handleCheck} className=" cursor-pointer" />
-            <label htmlFor={item.color} className=" font-medium cursor-pointer">
+            <label htmlFor={item.color} className="font-medium cursor-pointer">
                 {item.color}
             </label>
         </div>
         <>
             {isSelected && !file && (
-                <div className=" col-span-2 text-center">
+                <div className="col-span-2 text-center">
                     <SelectImage item={item} handleFileChange={handleFileChange} />
                 </div>
             )}
             {file && (
-                <div className=" flex flex-row gap-2 text-sm col-span-2 items-center justify-between">
+                <div className="flex flex-row gap-2 text-sm col-span-2 items-center justify-between">
                     <p className="">{file?.name}</p>
                     <div className="w-[70px]">
                         <Button label='Cancel' small outline onClick={() => {
@@ -65,6 +64,6 @@ const SelectColor = ({item, addImageToState, removeImageFromState, isProductCrea
         </>
      </div>
   )
-}
+};
 
-export default SelectColor
+export default SelectColor;

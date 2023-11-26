@@ -6,5 +6,5 @@ export default async function getUsers() {
     return users
    } catch (error: any) {
     throw new Error(error);
-   }
-}
+   };
+};

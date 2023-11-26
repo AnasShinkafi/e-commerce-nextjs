@@ -2,7 +2,7 @@ import prisma from '@/libs/prismadb'
 
 interface IParams {
     productId?: string
-}
+};
 
 export default async function getProductById(params:IParams) {
     try {
@@ -18,16 +18,16 @@ export default async function getProductById(params:IParams) {
                     },
                     orderBy: {
                         createdAt: 'desc'
-                    }
-                }
-            }
-        })
+                    },
+                },
+            },
+        });
 
         if(!product) {
             return null;
-        }
+        };
         return product;
     } catch (error: any) {
         throw new error
-    }
-}
+    };
+};

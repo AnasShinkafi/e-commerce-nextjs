@@ -1,5 +1,4 @@
 import Container from "@/components/Container"
-import getProducts from "@/actions/getProducts"
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import NullData from "@/components/NullData";
 import ManageOrdersClient from "./ManageOrdersClient";
@@ -11,7 +10,7 @@ const MangeOrders = async () => {
 
   if(!currentUser || currentUser.role !== "ADMIN") {
     return <NullData title='Oops! Access denied' />
-  }
+  };
 
   return (
     <div className=" pt-8">
@@ -19,7 +18,7 @@ const MangeOrders = async () => {
         <ManageOrdersClient orders={orders} />
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default MangeOrders
+export default MangeOrders;

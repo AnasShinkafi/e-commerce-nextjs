@@ -12,7 +12,7 @@ const Page = async () => {
             <RegisterForm currentUser={currentUser} />
         </FormWrap>
     </Container>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

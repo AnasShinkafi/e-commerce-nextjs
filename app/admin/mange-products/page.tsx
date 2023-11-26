@@ -10,15 +10,15 @@ const MangeProducts = async () => {
 
   if(!currentUser || currentUser.role !== "ADMIN") {
     return <NullData title='Oops! Access denied' />
-  }
+  };
 
   return (
-    <div className=" pt-8">
+    <div className="pt-8">
       <Container>
         <ManageProductClient products={products} />
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default MangeProducts
+export default MangeProducts;

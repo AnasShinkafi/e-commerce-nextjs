@@ -15,16 +15,16 @@ import moment from "moment";
 
 type Props = {
     orders: ExtendedOrder[];
-}
+};
 
 type ExtendedOrder = Order & {
   user: User
-}
+};
 
 const ManageOrdersClient = ({ orders }: Props) => {
     const router = useRouter();
 
-    let rows: any = []
+    let rows: any = [];
     if (orders) {
         rows = orders.map((order) => {
             return {
@@ -100,7 +100,7 @@ const ManageOrdersClient = ({ orders }: Props) => {
             router.refresh();
         }).catch((err) => {
             toast.error('Oops! Something went wrong!')
-        })
+        });
     }, [router]);
 
     const handleDispatch = useCallback((id: string) => {
@@ -135,7 +135,7 @@ const ManageOrdersClient = ({ orders }: Props) => {
                 />
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ManageOrdersClient
+export default ManageOrdersClient;

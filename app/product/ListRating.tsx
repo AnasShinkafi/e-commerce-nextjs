@@ -7,7 +7,7 @@ import Avatar from "@/components/Avatar";
 
 type Props = {
     product: any;
-}
+};
 
 const ListRating = ({product}: Props) => {
 
@@ -34,7 +34,7 @@ const ListRating = ({product}: Props) => {
             })}
         </div>
     </div>
-  )
-}
+  );
+};
 
-export default ListRating
+export default ListRating;

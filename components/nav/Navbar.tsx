@@ -34,7 +34,7 @@ const Navbar = async () => {
         </div>
         <Categories />
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

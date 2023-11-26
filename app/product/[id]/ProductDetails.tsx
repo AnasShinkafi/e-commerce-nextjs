@@ -12,7 +12,7 @@ import SetQuantity from "@/components/products/SetQuantity";
 
 type Props = {
     product: any;
-}
+};
 
 export type CartProductType = {
     id: string,
@@ -23,17 +23,17 @@ export type CartProductType = {
     selectedImg: SelectedImgType,
     quantity: number,
     price: number
-}
+};
 
 export type SelectedImgType = {
     color: string,
     colorCode: string,
     image: string,
-}
+};
 
 const Horizontal = () => {
     return <hr className="w-[30%] my-2 " />
-}
+};
 
 const ProductDetails = ({ product }: Props) => {
     const { handleAddProductToCart, cartProducts } = useCart();
@@ -68,7 +68,7 @@ const ProductDetails = ({ product }: Props) => {
         (value: SelectedImgType) => {
             setCartProduct((prev) => {
                 return { ...prev, selectedImage: value }
-            })
+            });
         }, [setCartProduct]);
 
     const handleQtyIncrease = useCallback(() => {
@@ -77,7 +77,7 @@ const ProductDetails = ({ product }: Props) => {
 
         setCartProduct((prev) => {
             return { ...prev, quantity: ++prev.quantity };
-        })
+        });
     }, [setCartProduct, cartProduct]);
 
     const handleQtyDecrease = useCallback(() => {
@@ -86,7 +86,7 @@ const ProductDetails = ({ product }: Props) => {
 
         setCartProduct((prev) => {
             return { ...prev, quantity: --prev.quantity };
-        })
+        });
     }, [setCartProduct, cartProduct]);
 
     return (
@@ -139,7 +139,7 @@ const ProductDetails = ({ product }: Props) => {
 
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ProductDetails
+export default ProductDetails;

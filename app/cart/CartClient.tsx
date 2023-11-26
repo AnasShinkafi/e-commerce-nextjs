@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 
 type Props = {
     currentUser: SafeUser | null;
-}
+};
 
 const CartClient = ({currentUser}: Props) => {
     const {cartProducts, handleClearCart, cartTotalAmount} = useCart();
@@ -28,7 +28,7 @@ const CartClient = ({currentUser}: Props) => {
                     </Link>
                 </div>
             </div>
-        )
+        );
     };
 
   return (
@@ -65,7 +65,7 @@ const CartClient = ({currentUser}: Props) => {
                 </div>
         </div>
     </div>
-  )
-}
+  );
+};
 
-export default CartClient
+export default CartClient;

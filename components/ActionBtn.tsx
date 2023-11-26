@@ -5,7 +5,7 @@ type Props = {
     icon: IconType;
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
     disabled?: boolean;
-}
+};
 
 const ActionBtn = ({icon: Icon, onClick, disabled}: Props) => {
   return (
@@ -13,6 +13,6 @@ const ActionBtn = ({icon: Icon, onClick, disabled}: Props) => {
         <Icon size={18} />
     </button>
   )
-}
+};
 
 export default ActionBtn

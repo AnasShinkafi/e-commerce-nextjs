@@ -6,7 +6,7 @@ const FormWrap = ({children}:{children: React.ReactNode}) => {
             {children}
         </div>
     </div>
-  )
-}
+  );
+};
 
-export default FormWrap
+export default FormWrap;

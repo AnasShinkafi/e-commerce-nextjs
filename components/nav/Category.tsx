@@ -8,7 +8,7 @@ type Props = {
     label: string;
     icon: IconType;
     selected: boolean;
-}
+};
 
 const Category = ({label, icon: Icon, selected}: Props) => {
     const router = useRouter();
@@ -21,13 +21,13 @@ const Category = ({label, icon: Icon, selected}: Props) => {
             let currentQuery = {};
 
             if(params) {
-                currentQuery = queryString.parse(params.toString())
-            }
+                currentQuery = queryString.parse(params.toString());
+            };
 
             const updateQuery: any = {
                 ...currentQuery,
                 Category: label,
-            }
+            };
 
             const url = queryString.stringify({
                 url: '/',
@@ -35,18 +35,18 @@ const Category = ({label, icon: Icon, selected}: Props) => {
             },
             {
                 skipNull: true,
-            }
-            )
+            },
+            );
             router.push(url);
-        }
+        }''
     }, [label, params, router]); 
 
   return (
     <div onClick={handleClick} className={`flex items-center justify-center text-center gap-1 p-2 border-b-2 hover:to-slate-800 cursor-pointer ${selected ? "border-b-slate-800 text-slate-800" : "border-transparent text-slate-500"}`}>
         <Icon size={20} />
-        <div className=" font-medium text-sm">{label}</div>
+        <div className=" font-medium text-md">{label}</div>
     </div>
-  )
-}
+  );
+};
 
-export default Category
+export default Category;

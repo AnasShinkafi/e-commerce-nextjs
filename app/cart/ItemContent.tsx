@@ -42,7 +42,7 @@ const ItemContent = ({item}: Props) => {
             {formatPrice(item.price * item.quantity) }
         </div>
     </div>
-  )
+  );
 };
 
 export default ItemContent;

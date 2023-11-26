@@ -14,7 +14,7 @@ import { AiOutlineGoogle } from "react-icons/ai"
 
 type Props = {
     currentUser: SafeUser | null;
-}
+};
 
 const LoginForm = ({currentUser}: Props) => {
     const router = useRouter();
@@ -23,14 +23,14 @@ const LoginForm = ({currentUser}: Props) => {
         defaultValues: {
             email: '',
             password: '',
-        }
+        },
     });
 
     useEffect(() => {
         if(currentUser) {
             router.push(`/cart`);
             router.refresh();
-        }
+        };
     },[currentUser, router]);
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
@@ -45,16 +45,16 @@ const LoginForm = ({currentUser}: Props) => {
                 router.push('/cart');
                 router.refresh();
                 toast.success('Logged in');   
-            } 
+            }; 
             if(callback?.error) {
                 toast.error(callback.error)
-            } 
+            }; 
         });
     };
 
     if(currentUser) {
         return <p className=" text-center">Logged in, Redirecting...</p>
-    }
+    };
   return (
     <>
         <Heading title="Login In to E~Shop" />
@@ -67,7 +67,7 @@ const LoginForm = ({currentUser}: Props) => {
             <Link className=" underline" href={'/register'}>Sign Up</Link>
         </p>
     </>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;

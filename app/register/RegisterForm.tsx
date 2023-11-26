@@ -77,7 +77,7 @@ const RegisterForm = ({currentUser}: Props) => {
             <Link className=" underline" href={'/login'}>Log In</Link>
         </p>
     </>
-  )
-}
+  );
+};
 
-export default RegisterForm
+export default RegisterForm;

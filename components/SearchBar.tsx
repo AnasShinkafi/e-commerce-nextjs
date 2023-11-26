@@ -21,19 +21,19 @@ const SearchBar = (props: Props) => {
             url: '/',
             query: {
                 searchTerm: data.searchTerm,
-            }
+            },
         }, {skipNull: true})
 
         router.push(url);
         reset();
-    } 
+    } ;
 
   return (
-    <div className=" flex items-center">
+    <div className="flex items-center">
         <input {...register('searchTerm')} type="text" className=" p-2 border border-gray-300 rounded-l-md focus:outline-none focus:border-[0.5px] focus:border-slate-500" placeholder="Explore E`Shop" autoComplete="off" />
         <button onClick={handleSubmit(onSubmit)} className=" bg-slate-700 hover:opacity-80 text-white p-2 rounded-r-md">Search</button>
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

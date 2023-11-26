@@ -9,7 +9,7 @@ export async function POST(req: Request) {
 
     if(currentUser.role !== 'ADMIN') {
         return NextResponse.error();
-    }
+    };
 
     const body = await req.json();
     const { name, description, price, brand, category, inStock, images } = body;
@@ -23,18 +23,18 @@ export async function POST(req: Request) {
             category, 
             inStock, 
             images,
-        }
+        },
     });
 
     return NextResponse.json(product);
-}
+};
 
 export async function PUT(req: Request) {
     const currentUser = await getCurrentUser();
 
     if(!currentUser || currentUser.role !== 'ADMIN') {
         return NextResponse.error();
-    }
+    };
 
     const body = await req.json();
     const { id, inStock } = body;
@@ -44,4 +44,4 @@ export async function PUT(req: Request) {
         data: { inStock },
     });
     return NextResponse.json(product);
-}
+};

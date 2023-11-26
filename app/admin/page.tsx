@@ -1,4 +1,3 @@
-import React from 'react'
 import Summary from './Summary'
 import getProducts from '@/actions/getProducts'
 import getOrders from '@/actions/getOrders'
@@ -7,9 +6,8 @@ import Container from '@/components/Container'
 import BarGraph from './BarGraph'
 import getGraphData from '@/actions/getGraphData'
 
-type Props = {}
 
-const Admin = async (props: Props) => {
+const Admin = async () => {
   const products = await getProducts({category: null});
   const orders = await getOrders();
   const users = await getUsers();
@@ -24,7 +22,7 @@ const Admin = async (props: Props) => {
         </div>
       </Container>
     </div>
-  )
+  );
 };
 
-export default Admin
+export default Admin;

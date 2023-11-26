@@ -8,18 +8,15 @@ import Status from "@/components/Status";
 import { MdAccessTimeFilled, MdDeliveryDining, MdDone, MdRemoveRedEye } from "react-icons/md";
 import ActionBtn from "@/components/ActionBtn";
 import { useRouter } from "next/navigation";
-import { useCallback } from "react";
-import axios from "axios";
-import toast from "react-hot-toast";
 import moment from "moment";
 
 type Props = {
     orders: ExtendedOrder[];
-}
+};
 
 type ExtendedOrder = Order & {
   user: User
-}
+};
 
 const OrdersClient = ({ orders }: Props) => {
     const router = useRouter();
@@ -110,7 +107,7 @@ const OrdersClient = ({ orders }: Props) => {
                 />
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default OrdersClient
+export default OrdersClient;

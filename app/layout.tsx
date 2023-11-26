@@ -12,7 +12,7 @@ const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] })
 export const metadata: Metadata = {
   title: 'E-Shop',
   description: 'ECommerce app',
-}
+};
 
 export default async function RootLayout({
   children,
@@ -35,5 +35,5 @@ export default async function RootLayout({
         </CartProvider> 
       </body>
     </html>
-  )
-}
+  );
+};

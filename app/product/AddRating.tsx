@@ -19,7 +19,7 @@ type Props = {
     user: (SafeUser & {
         orders: Order[]
     }) | null;
-}
+};
 
 const AddRating = ({product, user}: Props) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +29,7 @@ const AddRating = ({product, user}: Props) => {
         defaultValues: {
             comment: '',
             rating: 0,
-        }
+        },
     });
 
     const setCustomValue = (id: string, value: any) => {
@@ -37,8 +37,8 @@ const AddRating = ({product, user}: Props) => {
             shouldTouch: true,
             shouldDirty: true,
             shouldValidate: true,
-        })
-    }
+        });
+    };
 
     const onSubmit:SubmitHandler<FieldValues> = async(data) => {
         setIsLoading(true);
@@ -46,7 +46,7 @@ const AddRating = ({product, user}: Props) => {
             setIsLoading(false);
             return toast.error("No rating selected");
         };
-        const ratingData = {...data, userId: user?.id, product: product}
+        const ratingData = {...data, userId: user?.id, product: product};
         axios.post(`/api/rating`, ratingData).then(() => {
             toast.success('Rating submitted');
             router.refresh();
@@ -55,8 +55,8 @@ const AddRating = ({product, user}: Props) => {
             toast.error('Something went wrong')
         }).finally(() => {
             setIsLoading(false);
-        })
-    }
+        });
+    };
 
     if(!user || !product) return null; 
     const deliveredOrder = user?.orders.some(order => order.products.find(item => item.id === product.id) && order.deliveryStatus === 'delivered');
@@ -69,7 +69,7 @@ const AddRating = ({product, user}: Props) => {
     if(userReview || !deliveredOrder) return null;
 
   return (
-    <div className=' flex flex-col gap-2 max-w-[500px]'>
+    <div className='flex flex-col gap-2 max-w-[500px]'>
         <Heading title='Rate this product' />
         <Rating onChange={(event, newValue) => {
             setCustomValue('rating', newValue);
@@ -77,7 +77,7 @@ const AddRating = ({product, user}: Props) => {
         <Input id='comment' label='Comment' disabled={isLoading} register={register} errors={errors} required />
         <Button label={isLoading ? "Loading" : "Rate Product"} onClick={handleSubmit(onSubmit)} />
     </div>
-  )
-}
+  );
+};
 
-export default AddRating 
+export default AddRating;

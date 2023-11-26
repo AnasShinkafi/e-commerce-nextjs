@@ -22,17 +22,16 @@ export type ImageType = {
     color: string;
     colorCode: string;
     image?: File | null;
-}
+};
 
 export type UploadedImageType = {
     color: string;
     colorCode: string;
     image: string;
-}
+};
 
 const AddProductForm = () => {
     const [isLoading, setIsLoading] = useState(false);
-    // const [customValue, setCustomValue] = useState(false)
     const [images, setImages] = useState<ImageType[] | null>();
     const [isProductCreated, setIsProductCreated] = useState(false);
     const {register, handleSubmit, setValue , watch, reset, formState: {errors}} = useForm<FieldValues>({
@@ -46,7 +45,7 @@ const AddProductForm = () => {
             images: [],
         }
     });
-    const router = useRouter()
+    const router = useRouter();
 
     useEffect(() => {
         setCustomValue("image", images);
@@ -57,7 +56,7 @@ const AddProductForm = () => {
             reset();
             setImages(null);
             setIsProductCreated(false);
-        }
+        };
     }, [isProductCreated, reset]);
 
     const onsubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -69,12 +68,12 @@ const AddProductForm = () => {
        if(!data.category) {
         setIsLoading(false);
         return toast.error('Category is not selected!')
-       }
+       };
 
        if(!data.images || data.images.length === 0) {
         setIsLoading(false);
         return toast.error('No selected image!');
-       }
+       };
 
        const handleImageUploads = async () => {
         toast("Creating product, please wait...");
@@ -96,7 +95,7 @@ const AddProductForm = () => {
                                         break;
                                     case "running":
                                         break;
-                                }
+                                };
                             },
                             (error) => {
                                 reject(error);
@@ -108,19 +107,19 @@ const AddProductForm = () => {
                                         image: downloadURL,
                                     })
                                     console.log("File available at", downloadURL); 
-                                    resolve()         
+                                    resolve();          
                                 }).catch((error) => {
                                     reject(error);
                                 });
-                            }
-                        )
-                    })
-                }
-            }
+                            },
+                        );
+                    });
+                };
+            };
         } catch (error) {
             setIsLoading(false);
             return toast.error("Error handling image uploads.");
-        }
+        };
        };
 
        await handleImageUploads();
@@ -135,8 +134,7 @@ const AddProductForm = () => {
         toast.error('Something went wrong when saving product to db');
        }).finally(() => {
         setIsLoading(false);
-       });
-       
+       });  
     }; 
 
     const category = watch('category');
@@ -151,23 +149,20 @@ const AddProductForm = () => {
     const addImageToState = useCallback((value: ImageType) => {
         setImages((prev) => {
             if(!prev) {
-                return [value]
-            }
-
-            return [...prev, value]
-        })
+                return [value];
+            };
+            return [...prev, value];
+        });
     }, []);
 
     const removeImageFromState = useCallback((value: ImageType) => {
         setImages((prev) => {
             if(prev) {
                 const filteredImages = prev.filter((item) => item.color !== value.color);
-
                 return filteredImages;
-            }
-
+            };
             return prev;
-        })
+        });
     }, []);
 
   return (
@@ -176,33 +171,33 @@ const AddProductForm = () => {
         <Input id="name" label="Name" disabled={isLoading} register={register} errors={errors} required />
         <Input id="price" label="Price" type="number" disabled={isLoading} register={register} errors={errors} required />
         <Input id="brand" label="Brand" disabled={isLoading} register={register} errors={errors} required />
-        <TextArea id="description" label="dDescription" disabled={isLoading} register={register} errors={errors} required />
+        <TextArea id="description" label="Description" disabled={isLoading} register={register} errors={errors} required />
         <CustomCheckbox id="inStock" register={register} label="This Product is in stock"/>
-        <div className=" w-full font-medium">
-            <div className=" mb-2 font-semibold">Select a Category</div>
-            <div className=" grid grid-cols-2 md:grid-cols-3 max-h-[50vh] gap-3 overflow-y-auto">
+        <div className="w-full font-medium">
+            <div className="mb-2 font-semibold">Select a Category</div>
+            <div className="grid grid-cols-2 md:grid-cols-3 max-h-[50vh] gap-3 overflow-y-auto">
                 {categories.map((item) => {
                     if(item.label === "All") {
                         return null ;
                     }
                     return (
-                        <div className=" col-span" key={item.label}>
+                        <div className="col-span" key={item.label}>
                             <CategoryInput onClick={(category) => setCustomValue('category', category)}  selected={category === item.label} label={item.label} icon={item.icon} />
                         </div>
                     )
                 })}
             </div>
         </div>
-        <div className=" w-full flex flex-col flex-wrap gap-4">
+        <div className="w-full flex flex-col flex-wrap gap-4">
             <div className="">
-                <div className=" font-bold">
+                <div className="font-bold">
                     Select the available product colors and upload their images,
                 </div>
-                <div className=" text-sm">
+                <div className="text-sm">
                     You must upload an image for each of the color selected otherwise your color selection will be ignored.
                 </div>
             </div>
-            <div className=" grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3">
                 {colors.map((item, index) => {
                     return <SelectColor key={index} item={item} addImageToState={addImageToState} removeImageFromState={removeImageFromState} isProductCreated={isProductCreated} />
                 })}
@@ -211,6 +206,6 @@ const AddProductForm = () => {
         <Button label={isLoading ? 'Loading...' : 'Add Product' } onClick={handleSubmit(onsubmit)} />
     </>
   )
-}
+};
 
-export default AddProductForm
+export default AddProductForm;

@@ -16,8 +16,8 @@ type SummaryDataType = {
     [key: string]: {
         label: string;
         digit: number;
-    }
-}
+    };
+};
 
 const Summary = ({orders, products, users}: Props) => {
     const [summaryData, setSummaryData] = useState<SummaryDataType>({
@@ -51,11 +51,6 @@ const Summary = ({orders, products, users}: Props) => {
         setSummaryData((prev) => {
             let tempData = {...prev};
 
-            // const totalSale = orders.reduce((acc, item) => {
-            //     if(item.status === 'complete') {
-            //         return acc '+' item.amount
-            //     } else return acc
-            // }, 0);
             const totalSale = orders.reduce((acc, item) => {
                 if (item.status === 'complete') {
                     return acc + item.amount;
@@ -80,22 +75,22 @@ const Summary = ({orders, products, users}: Props) => {
             tempData.products.digit = products.length;
             tempData.users.digit = users.length;
 
-            return tempData
+            return tempData;
         });
     },[orders, products, users]);
 
     const summaryKeys = Object.keys(summaryData);
 
   return (
-    <div className=" max-w-[1150px] m-auto">
-        <div className=" mb-4 mt-8">
+    <div className="max-w-[1150px] m-auto">
+        <div className="mb-4 mt-8">
             <Heading title="Stats" center />
         </div>
-        <div className=" grid grid-cols-2 gap-3 max-h-50vh overflow-y-auto">
+        <div className="grid grid-cols-2 gap-3 max-h-50vh overflow-y-auto">
             {summaryKeys && summaryKeys.map((key) => {
                 return (
-                    <div className=" rounded-xl border-2 p-4 flex flex-col items-center gap-2 transition" key={key}>
-                        <div className=" text-xl md:text-4xl font-bold">
+                    <div className="rounded-xl border-2 p-4 flex flex-col items-center gap-2 transition" key={key}>
+                        <div className="text-xl md:text-4xl font-bold">
                             {summaryData[key].label === 'Total Sale' ? (
                                 <>{formatPrice(summaryData[key].digit)}</>
                             ) : (
@@ -108,7 +103,7 @@ const Summary = ({orders, products, users}: Props) => {
             })}
         </div>
     </div>
-  )
-}
+  );
+};
 
-export default Summary
+export default Summary;

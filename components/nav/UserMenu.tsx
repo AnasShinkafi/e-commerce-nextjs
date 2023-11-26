@@ -11,7 +11,7 @@ import { SafeUser } from "@/types";
 
 type Props = {
     currentUser: SafeUser | null;
-}
+};
 
 const UserMenu = ({currentUser}: Props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -67,7 +67,7 @@ const UserMenu = ({currentUser}: Props) => {
         </div>
         {isOpen ? <BackDrop onClick={toggleOpen} /> : null}
     </>
-  )
-}
+  );
+};
 
-export default UserMenu
+export default UserMenu;

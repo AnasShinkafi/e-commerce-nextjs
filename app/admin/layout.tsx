@@ -4,7 +4,7 @@ import React from 'react'
 export const metadata = {
     title: "E~Shop Admin",
     description: "E~Shop Admin Dashboard",
-}
+};
 
 const AdminLayout = ({children}: {children: React.ReactNode}) => {
   return (
@@ -15,6 +15,6 @@ const AdminLayout = ({children}: {children: React.ReactNode}) => {
         {children}
     </div>
   )
-}
+};
 
-export default AdminLayout
+export default AdminLayout;

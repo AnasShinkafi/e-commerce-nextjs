@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import React from 'react'
 
 const Banner = () => {
   return (
@@ -15,7 +14,7 @@ const Banner = () => {
         </div>
         </div>
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;

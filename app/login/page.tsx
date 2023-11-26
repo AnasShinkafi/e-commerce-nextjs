@@ -1,6 +1,5 @@
 import Container from '@/components/Container'
 import FormWrap from '@/components/FormWrap'
-import React from 'react'
 import LoginForm from './LoginForm'
 import { getCurrentUser } from '@/actions/getCurrentUser'
 
@@ -14,7 +13,7 @@ const Page = async () => {
             <LoginForm currentUser={currentUser}/>
         </FormWrap>
     </Container>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

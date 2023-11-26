@@ -1,9 +1,8 @@
-import React from 'react'
 
 type Props = {
     children: React.ReactNode;
     onClick: () => void;
-}
+};
 
 const MenuItem = ({children, onClick}: Props) => {
   return (
@@ -13,4 +12,4 @@ const MenuItem = ({children, onClick}: Props) => {
   );  
 };
 
-export default MenuItem
+export default MenuItem;

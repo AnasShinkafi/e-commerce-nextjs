@@ -52,7 +52,7 @@ const CheckoutForm = ({clientSecret, handleSetPaymentSuccess}: Props) => {
             setIsLoading(false);
         });
     };
-    
+
   return (
     <form onSubmit={handleSubmit} id="payment-form">
         <div className="mb-6">
@@ -74,4 +74,4 @@ const CheckoutForm = ({clientSecret, handleSetPaymentSuccess}: Props) => {
   );
 };
 
-export default CheckoutForm
+export default CheckoutForm;

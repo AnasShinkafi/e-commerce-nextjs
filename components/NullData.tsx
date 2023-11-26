@@ -1,15 +1,14 @@
-import React from 'react'
 
 type Props = {
     title: string;
-}
+};
 
 const NullData = ({title}: Props) => {
   return (
-    <div className=' w-full h-[50vh] flex items-center justify-center text-xl md:text-2xl'>
-        <p className=" font-medium">{title}</p>
+    <div className='w-full h-[50vh] flex items-center justify-center text-xl md:text-2xl'>
+        <p className="font-medium">{title}</p>
     </div>
   )
-}
+};
 
-export default NullData
+export default NullData;

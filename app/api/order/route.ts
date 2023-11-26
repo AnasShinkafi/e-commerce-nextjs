@@ -9,7 +9,7 @@ export async function PUT(req: Request) {
 
     if(currentUser.role !== 'ADMIN') {
         return NextResponse.error();
-    }
+    };
 
     const body = await req.json();
     const { id, deliveryStatus } = body;
@@ -19,4 +19,4 @@ export async function PUT(req: Request) {
         data: { deliveryStatus },
     });
     return NextResponse.json(order);
-}
+};

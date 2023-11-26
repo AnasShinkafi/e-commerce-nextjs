@@ -11,10 +11,10 @@ export default async function getOrdersByUserId(userId: string) {
             },
             where: {
                 userId: userId,
-            }
+            },
         });
         return orders;
     } catch (error: any) {
         throw new Error(error)
-    }
-}
+    };
+};
